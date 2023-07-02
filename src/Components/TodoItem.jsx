@@ -22,7 +22,7 @@ export const TodoItem = ({ todo }) => {
           </span>{" "}
           {title}{" "}
         </h3>
-        <p    > {description}   </p>
+        <p  className={`${completed ? 'tachado' : ""}`}  > {description}   </p>
         <span onClick={() => deleteTodo(title)}>
           <i className="close fa-regular fa-circle-xmark"></i>
         </span>
