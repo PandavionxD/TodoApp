@@ -157,3 +157,23 @@ span {
     font-size: 1.6rem;
   }
 }
+
+.tachado{
+  color: $color-primary;
+  text-decoration: line-through;
+}
+.msj{
+  margin-top: 1rem;
+  font-size: $font-md;
+  // background-color: red;
+  text-align: center;
+  font-weight:500;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  box-shadow: $shadow;
+
+}
+.contenedor{
+  display: flex;
+  justify-content: center;
+}

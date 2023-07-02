@@ -11,17 +11,17 @@ export const ProviderContext = ({ children }) => {
     {
       title: "Recolectar la piedra del poder",
       description: "Piedra ubicada en un lugar lejano en el espacio",
-      completed: true,
+      completed: false,
     },
     {
       title: "Recolectar la piedra del tiempo",
       description: "Piedra ubicada en un lugar lejano en el espacio",
-      completed: true,
+      completed: false,
     },
     {
       title: "Recolectar la piedra de la mente",
       description: "Piedra ubicada en un lugar lejano en el espacio",
-      completed: true,
+      completed: false,
     },
     {
       title: "Recolectar la piedra del espacio",
@@ -33,10 +33,49 @@ export const ProviderContext = ({ children }) => {
       description: "Piedra ubicada en un lugar lejano en el espacio",
       completed: false,
     },
-    
   ];
 
   const [Todos, setTodos] = useState(Todos_v1);
+  const [valueChange, setvalueChange] = useState("");
 
-  return <TodoContext.Provider value={{Todos}}>{children}</TodoContext.Provider>;
+  let Todos1 = [];
+  const ValueMin = valueChange.toLowerCase();
+
+  if (!valueChange.length >= 1) {
+    Todos1 = Todos;
+  } else {
+    Todos1 = Todos.filter((todo) => {
+      const todoItemValue = todo.title.toLowerCase();
+      return todoItemValue.includes(ValueMin);
+    });
+  }
+
+  const deleteTodo=(id)=>{
+    const Todos1 = [...Todos]
+    const index = Todos1.findIndex(todo=>{
+      return todo.title ===id
+    })
+    Todos1.splice(index,1)
+    setTodos(Todos1)
+  }
+
+  const completedTodo = (text)=>{
+    const Todos1 = [...Todos]
+    const index = Todos1.findIndex(todo=>{
+      return todo.title === text
+    })
+    Todos1[index].completed=!Todos1[index].completed
+    setTodos(Todos1)
+    
+  }
+
+
+
+  return (
+    <TodoContext.Provider
+      value={{ Todos, setTodos, valueChange, setvalueChange, Todos1,completedTodo ,deleteTodo}}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
 };

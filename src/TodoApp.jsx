@@ -7,7 +7,7 @@ export const TodoApp = () => {
     <>
       <ProviderContext>
         <div className="container">
-          <h1> 🫠🫠 TodoApp 🫠🫠 </h1>
+          <h1> 👻👻 TodoApp 👻👻 </h1>
           <hr />
           <TodoTitle />
           <TodoSearch />
