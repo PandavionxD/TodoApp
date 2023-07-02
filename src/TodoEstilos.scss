@@ -84,7 +84,7 @@ input {
 .card {
   padding: 1rem;
   //   outline: black 1px solid;
-  height: 12rem;
+  height: 15rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -96,7 +96,8 @@ input {
     font-weight: 500;
   }
   p {
-    font-size: 300;
+    font-size: 1.4rem;
+    font-weight: 300;
     text-align: start;
   }
 }
