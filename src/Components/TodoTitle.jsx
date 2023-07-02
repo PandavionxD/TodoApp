@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import { TodoContext } from "../UseContext/TodoContext";
 
 export const TodoTitle = () => {
-  return (
-    <h3>Hay 4 TODOS en total, y 3 TODOS pendientes 😅😅😅</h3>
-  )
-}
+  const { Todos } = useContext(TodoContext);
+
+  const TodosCompleted = Todos.filter((todo) => todo.completed === true).length;
+
+  const TodosTotal = Todos.length
+
+  return <h3>Hay {TodosTotal} TODOS en total, y {TodosCompleted} TODOS completados 😅😅😅</h3>;
+};
