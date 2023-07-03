@@ -145,6 +145,7 @@ span {
   line-height: 2.7rem;
   transition: all .6s;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.418);
+  z-index: 20;
   &:hover{
     transform: rotate(220deg);
   }
@@ -178,4 +179,20 @@ span {
 .contenedor{
   display: flex;
   justify-content: center;
+}
+
+
+.modal{
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  color: white;
+  display: grid;
+  grid-template-columns: 300px;
+  justify-content: center;
+  align-items: center;
 }

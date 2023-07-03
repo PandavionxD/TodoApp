@@ -38,6 +38,9 @@ export const ProviderContext = ({ children }) => {
   const valueStorage = "TodoApp_v1";
   const Local = localStorage.getItem(valueStorage);
   let localStorageValue;
+
+  const [modal, setmodal] = useState(false);
+
   if (!Local) {
     localStorage.setItem(valueStorage, JSON.stringify([]));
     localStorageValue = [];
@@ -59,12 +62,11 @@ export const ProviderContext = ({ children }) => {
     });
   }
 
-  const PersitenciaLocalStorage = (newTodo)=>{
-    const stringyfi = JSON.stringify(newTodo)
-    localStorage.setItem(valueStorage,stringyfi)
-    setTodos(newTodo)
-  }
-
+  const PersitenciaLocalStorage = (newTodo) => {
+    const stringyfi = JSON.stringify(newTodo);
+    localStorage.setItem(valueStorage, stringyfi);
+    setTodos(newTodo);
+  };
 
   const deleteTodo = (id) => {
     const Todos1 = [...Todos];
@@ -72,7 +74,7 @@ export const ProviderContext = ({ children }) => {
       return todo.title === id;
     });
     Todos1.splice(index, 1);
-    return PersitenciaLocalStorage(Todos1)
+    return PersitenciaLocalStorage(Todos1);
   };
 
   const completedTodo = (text) => {
@@ -81,7 +83,7 @@ export const ProviderContext = ({ children }) => {
       return todo.title === text;
     });
     Todos1[index].completed = !Todos1[index].completed;
-    return PersitenciaLocalStorage(Todos1)
+    return PersitenciaLocalStorage(Todos1);
   };
 
   return (
@@ -94,6 +96,8 @@ export const ProviderContext = ({ children }) => {
         Todos1,
         completedTodo,
         deleteTodo,
+        modal,
+        setmodal,
       }}
     >
       {children}

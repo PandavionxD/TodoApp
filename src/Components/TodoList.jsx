@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { TodoContext } from "../UseContext/TodoContext";
 import { TodoItem } from "./TodoItem";
 import { TodoMsj } from "./TodoMsj";
+import { Modal } from "../modal/Modal";
 
 export const TodoList = () => {
-  const { Todos, valueChange, Todos1 } = useContext(TodoContext);
+  const { Todos, Todos1 , modal} = useContext(TodoContext);
 
   return (
     <>
@@ -15,6 +16,16 @@ export const TodoList = () => {
           <TodoItem todo={todo} key={id} />
         ))}
       </div>
+
+      {modal && (
+        <Modal>
+          <div className="modal">
+            <div className="form">
+              <h1> {Todos[0].title}? </h1>
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };
