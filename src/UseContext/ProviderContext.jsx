@@ -86,9 +86,20 @@ export const ProviderContext = ({ children }) => {
     return PersitenciaLocalStorage(Todos1);
   };
 
+  const AddTodo = (title,description)=>{
+    const todov1 = {
+      title,
+      description,
+      completed:false,
+    }
+    console.log([todov1,...Todos])
+    return PersitenciaLocalStorage([todov1,...Todos])
+  }
+
   return (
     <TodoContext.Provider
       value={{
+        AddTodo,
         Todos,
         setTodos,
         valueChange,
